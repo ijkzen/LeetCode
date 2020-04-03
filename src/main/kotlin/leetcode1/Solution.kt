@@ -1,5 +1,7 @@
 package leetcode1
 
+import java.lang.StringBuilder
+
 
 fun twoSum(nums: IntArray, target: Int): IntArray? {
     val map = mutableMapOf<Int, Int>()
@@ -13,8 +15,20 @@ fun twoSum(nums: IntArray, target: Int): IntArray? {
     return null
 }
 
+fun IntArray.string(): String? {
+    val iterator = iterator()
+    val builder = StringBuilder("[")
+    while (iterator.hasNext()) {
+        builder.append(iterator.next())
+        builder.append(",")
+    }
+    builder.deleteCharAt(builder.length - 1)
+    builder.append("]")
+    return builder.toString()
+}
+
 
 fun main() {
     val nums = intArrayOf(3, 3)
-    println(twoSum(nums, 6)?.get(0))
+    println(twoSum(nums, 6)?.string())
 }

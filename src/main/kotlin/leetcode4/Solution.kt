@@ -25,9 +25,9 @@ fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
     while (imin <= imax) {
         i = (imin + imax) / 2
         j = half - i
-        if (b[j - 1] > a[i] && i < imax) {
+        if (i < imax && b[j - 1] > a[i] ) {
             imin = i + 1
-        } else if (a[i - 1] > b[j] && i > imin) {
+        } else if ( i > imin && a[i - 1] > b[j] ) {
             imax = i - 1
         } else {
             val maxLeft: Int = when {

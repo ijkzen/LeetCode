@@ -1,44 +1,48 @@
 package leetcode13
 
-fun longestCommonPrefix(strs: Array<String>): String {
-    if (strs.isEmpty()) {
-        return ""
-    }
+fun romanToInt(s: String): Int {
+    var sum = 0
+    var isCombine = false
 
-    val minSize = minSize(strs)
-    val builder = StringBuilder()
-    for (i in 0 until minSize) {
-        if (isEqual(i, strs)) {
-            builder.append(strs[0][i])
+    for (i in s.indices) {
+        if (i <= s.length - 2) {
+            val tmp1 = number(s.substring(i, i + 1))
+            val tmp2 = number(s.substring(i + 1, i + 2))
+            sum += if (tmp1 < tmp2) {
+                isCombine = true
+                (tmp2 - tmp1)
+            } else {
+                if (isCombine) {
+                    isCombine = false
+                    0
+                } else {
+                    tmp1
+                }
+            }
         } else {
-            break
+            if (!isCombine) {
+                sum += number(s.substring(i, i + 1))
+            }
         }
     }
-    return builder.toString()
+
+    return sum
 }
 
-fun minSize(strs: Array<String>): Int {
-    var minSize = strs[0].length
-    strs.forEach {
-        if (it.length < minSize) {
-            minSize = it.length
-        }
+fun number(number: String): Int {
+    return when (number) {
+        "I" -> 1
+        "V" -> 5
+        "X" -> 10
+        "L" -> 50
+        "C" -> 100
+        "D" -> 500
+        "M" -> 1000
+        else -> 0
     }
 
-    return minSize
-}
-
-fun isEqual(number: Int, strs: Array<String>): Boolean {
-    val first = strs[0][number]
-    for (i in strs.indices) {
-        if (strs[i][number] != first) {
-            return false
-        }
-    }
-
-    return true
 }
 
 fun main() {
-    println(longestCommonPrefix(arrayOf("flower", "flow", "flight")))
+    println(romanToInt("MCMXCIV"))
 }

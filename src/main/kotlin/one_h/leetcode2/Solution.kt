@@ -9,8 +9,10 @@ class ListNode(var `val`: Int) {
         val builder = StringBuilder()
         var wheel = this
         builder.append(`val`)
+        builder.append(",")
         while (wheel.next != null) {
             builder.append(wheel.next?.`val`)
+            builder.append(",")
             wheel = wheel.next!!
         }
         return builder.toString()
@@ -53,7 +55,7 @@ fun getResult(n1: ListNode?, n2: ListNode?, isCarry: Boolean): Int {
     } else if (n1 != null && n2 == null) {
         result = n1.`val` + if (isCarry) 1 else 0
     } else if (n1 != null && n2 != null) {
-        result = (n1.`val` + n2.`val`)  + if (isCarry) 1 else 0
+        result = (n1.`val` + n2.`val`) + if (isCarry) 1 else 0
     }
     return result
 }

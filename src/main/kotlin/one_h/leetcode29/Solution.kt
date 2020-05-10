@@ -7,7 +7,6 @@ fun divide(dividend: Int, divisor: Int): Int {
     }
 
 
-
     var isMinus = false
 
     if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {

@@ -1,7 +1,58 @@
 package one_h.leetcode37
 
-fun solveSudoku(board: Array<CharArray>): Unit {
+data class Point(val x: Int, val y: Int)
 
+data class PreviousResult(val candidates: List<Char>, var candidateIndex: Int)
+
+fun solveSudoku(board: Array<CharArray>): Unit {
+    val points = getSpacePoints(board)
+    var pointIndex = 0
+    val previousResultMap = HashMap<Int, PreviousResult>()
+    while (pointIndex < points.size) {
+        val point = points[pointIndex]
+        board[point.x][point.y] = '.'
+
+        var previousResult = previousResultMap[pointIndex]
+        if (previousResult == null) {
+            val candidates = getCandidateList(board, point.x, point.y)
+
+            if (candidates.isEmpty()) {
+                pointIndex--
+                for (tmp in (pointIndex + 1) until points.size) {
+                    previousResultMap.remove(tmp)
+                }
+            } else {
+                previousResult = PreviousResult(candidates, 0)
+                board[point.x][point.y] = previousResult.candidates[previousResult.candidateIndex]
+                previousResultMap[pointIndex] = previousResult
+                pointIndex++
+            }
+        } else {
+            if (previousResult.candidateIndex + 1 >= previousResult.candidates.size) {
+                pointIndex--
+                for (tmp in (pointIndex + 1) until points.size) {
+                    previousResultMap.remove(tmp)
+                }
+            } else {
+                previousResult.candidateIndex = previousResult.candidateIndex + 1
+                board[point.x][point.y] = previousResult.candidates[previousResult.candidateIndex]
+                pointIndex++
+            }
+        }
+    }
+}
+
+fun getSpacePoints(board: Array<CharArray>): List<Point> {
+    val result = ArrayList<Point>()
+    for (i in 0 until 9) {
+        for (j in 0 until 9) {
+            if (board[i][j] == '.') {
+                result.add(Point(i, j))
+            }
+        }
+    }
+
+    return result
 }
 
 fun getCandidateList(board: Array<CharArray>, i: Int, j: Int): List<Char> {
@@ -24,7 +75,7 @@ fun getCandidateList(board: Array<CharArray>, i: Int, j: Int): List<Char> {
     for (subX in 0 until 3) {
         for (subY in 0 until 3) {
             val x: Int = (subIndex / 3) * 3 + subX
-            val y: Int = (subIndex / 3) * 3 + subY
+            val y: Int = (subIndex % 3) * 3 + subY
             subContent.add(board[x][y])
         }
     }
@@ -36,6 +87,15 @@ fun getCandidateList(board: Array<CharArray>, i: Int, j: Int): List<Char> {
     result.removeAll(subContent)
 
     return result
+}
+
+fun CharArray.string(): String {
+    val builder = StringBuilder()
+    for (char in this) {
+        builder.append(char)
+        builder.append(',')
+    }
+    return builder.toString()
 }
 
 fun main() {
@@ -73,5 +133,8 @@ fun main() {
             }
         }
     }
-    println(getCandidateList(sudoku, 0, 2))
+    solveSudoku(sudoku)
+    for (i in 0 until 9) {
+        println(sudoku[i].string())
+    }
 }

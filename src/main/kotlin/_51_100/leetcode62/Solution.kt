@@ -1,30 +1,28 @@
 package _51_100.leetcode62
 
-val map = HashMap<Int, Int>()
+import java.math.BigInteger
+
+val map = HashMap<Int, BigInteger>()
 
 fun uniquePaths(m: Int, n: Int): Int {
-    map[0] = 1
-    map[1] = 1
-
-    val a = getCount(m - 1)
-    val b = getCount(n - 1)
-
-    return getCount(m - 1) * getCount(n - 1)
+    map[0] = BigInteger.ONE
+    map[1] = BigInteger.ONE
+    return (getFactorial(m + n - 2) / getFactorial(m - 1) / getFactorial(n - 1)).toInt()
 }
 
-fun getCount(n: Int): Int {
-    if (map[n] != null) {
-        return map[n]!!
+
+fun getFactorial(n: Int): BigInteger {
+
+    return if (map[n] != null) {
+        map[n]!!
+    } else {
+        val result = getFactorial(n - 1).multiply(BigInteger("$n"))
+        map[n] = result
+        result
     }
 
-    var result = 0
-    for (i in 1..(n / 2)) {
-        result += (getCount(i) + getCount(n - i))
-    }
-    map[n] = result
-    return result
 }
 
 fun main() {
-    println(uniquePaths(7, 3))
+    println(uniquePaths(23, 12))
 }

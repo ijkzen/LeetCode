@@ -1,7 +1,5 @@
 package _51_100.leetcode68
 
-import _51_100.leetcode53.max
-
 fun fullJustify(words: Array<String>, maxWidth: Int): List<String> {
     val result = ArrayList<String>()
     val finalResult: WordsResult

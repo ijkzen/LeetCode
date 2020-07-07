@@ -7,6 +7,8 @@ fun search(nums: IntArray, target: Int): Boolean {
 
     if (nums.size == 1) {
         return nums[0] == target
+    } else if (nums.size == 2) {
+        return nums[0] == target || nums[1] == target
     }
 
     val maxIndex = getSpecialPoint(nums, 0, nums.size - 1)
@@ -33,8 +35,8 @@ fun search(nums: IntArray, target: Int): Boolean {
 }
 
 fun getSpecialPoint(nums: IntArray, start: Int, end: Int): Int {
-    if (end - start == 1 ) {
-        return if (nums[start] >= nums[end]) {
+    if (end - start == 1) {
+        return if (nums[start] > nums[end]) {
             start
         } else {
             end
@@ -46,10 +48,16 @@ fun getSpecialPoint(nums: IntArray, start: Int, end: Int): Int {
     }
 
     val middle = (start + end) / 2
-    return if (nums[start] > nums[middle]) {
-        getSpecialPoint(nums, start, middle)
-    } else {
-        getSpecialPoint(nums, middle, end)
+    return when {
+        nums[start] == nums[middle] -> {
+            getSpecialPoint(nums, start + 1, end)
+        }
+        nums[start] > nums[middle] -> {
+            getSpecialPoint(nums, start, middle)
+        }
+        else -> {
+            getSpecialPoint(nums, middle, end)
+        }
     }
 }
 
@@ -67,6 +75,6 @@ fun findTarget(nums: IntArray, start: Int, end: Int, target: Int): Boolean {
 }
 
 fun main() {
-    val nums = intArrayOf(1,3)
-    println(search(nums, 0))
+    val nums = intArrayOf(1, 3, 1,1,1)
+    println(search(nums, 3))
 }

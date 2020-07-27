@@ -1,6 +1,6 @@
 package _51_100.leetcode94
 
-data class TreeNode(val `val`: Int, var left: TreeNode?, var right: TreeNode?)
+data class TreeNode(var `val`: Int, var left: TreeNode?, var right: TreeNode?)
 
 val list = ArrayList<Int>()
 

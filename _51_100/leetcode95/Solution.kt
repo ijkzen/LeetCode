@@ -1,13 +1,41 @@
 package _51_100.leetcode95
 
-fun numTrees(n: Int): Int {
-    var c :Long= 1
-    for (i in 1..n) {
-        c = c * (4 * i - 2) / (i + 1)
+import _51_100.leetcode94.TreeNode
+
+fun generateTrees(n: Int): List<TreeNode?> {
+    val dp = Array<MutableList<TreeNode>>(n + 1){
+        ArrayList()
     }
-    return c.toInt()
+    dp[0] = ArrayList()
+    dp[1] = arrayListOf(TreeNode(1, null, null))
+    if (n == 0 || n == 1) {
+        return dp[n]
+    }
+
+    for (length in 2..n) {
+        for (root in 1..length) {
+            val leftLength = root - 1
+            val rightLength = length - root
+            for (leftTree in dp[leftLength]) {
+                for (rightTree in dp[rightLength]) {
+                    val node = TreeNode(root, null, null)
+                    node.left = leftTree
+                    node.right = clone(rightTree, root)
+                    dp[length].add(node)
+                }
+            }
+        }
+    }
+
+    return dp[n]
 }
 
-fun main() {
-    println(numTrees(19))
+fun clone(treeNode: TreeNode?, offset: Int):TreeNode? {
+    if (treeNode == null) {
+        return null
+    }
+    val node = TreeNode(treeNode.`val` + offset, null, null)
+    node.left = clone(treeNode.left, offset)
+    node.right = clone(treeNode.right, offset)
+    return node
 }

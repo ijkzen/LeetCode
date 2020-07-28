@@ -3,15 +3,15 @@ package _51_100.leetcode95
 import _51_100.leetcode94.TreeNode
 
 fun generateTrees(n: Int): List<TreeNode?> {
-    val dp = Array<MutableList<TreeNode>>(n + 1){
+    val dp = Array<MutableList<TreeNode?>>(n + 1){
         ArrayList()
     }
     dp[0] = ArrayList()
-    dp[1] = arrayListOf(TreeNode(1, null, null))
     if (n == 0 || n == 1) {
         return dp[n]
     }
-
+    dp[0].add(null)
+    dp[1] = arrayListOf(TreeNode(1, null, null))
     for (length in 2..n) {
         for (root in 1..length) {
             val leftLength = root - 1
@@ -38,4 +38,8 @@ fun clone(treeNode: TreeNode?, offset: Int):TreeNode? {
     node.left = clone(treeNode.left, offset)
     node.right = clone(treeNode.right, offset)
     return node
+}
+
+fun main() {
+    println(generateTrees(3).size)
 }

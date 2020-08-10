@@ -38,7 +38,7 @@ fun getMaxHeight(root: TreeNode?): Int {
 }
 
 fun main() {
-    val node1 = TreeNode(1)
+    val node1 =   TreeNode(1)
     val node2 = TreeNode(2)
     val node3 = TreeNode(2)
     val node4 = TreeNode(3)

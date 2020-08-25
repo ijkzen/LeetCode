@@ -1,39 +1,41 @@
 package _101_150.leetcode123
 
+data class Key(val day: Int, val status: Int, val k: Int)
+
 fun maxProfit(prices: IntArray): Int {
     if (prices.size <= 1) {
         return 0
     }
 
-    val deltaList = ArrayList<Int>()
-    var currentMin = prices[0]
-    for (i in 1 until prices.size) {
-        if (prices[i] < prices[i - 1]) {
-            deltaList.add(prices[i - 1] - currentMin)
-            currentMin = prices[i]
-        }
+    return dfs(prices, 0, 0, 0, 2, HashMap())
+}
 
-        if (i == prices.size - 1) {
-            deltaList.add(prices[i] - currentMin)
-        }
+fun dfs(prices: IntArray, day: Int, status: Int, k: Int, targetK: Int, map: MutableMap<Key, Int>): Int {
+    val key = Key(day, status, k)
+    if (map.containsKey(key)) {
+        return map[key]!!
     }
 
-    deltaList.removeIf { it < 0 }
-    deltaList.sortDescending()
-
-    return when {
-        deltaList.size == 1 -> {
-            deltaList[0]
-        }
-        deltaList.size >= 2 -> {
-            deltaList[0] + deltaList[1]
-        }
-        else -> {
-            0
-        }
+    if (day == prices.size || k == targetK) {
+        return 0
     }
+    var a = 0
+    var b = 0
+    var c = 0
+    a = dfs(prices, day + 1, status, k, targetK, map)
+
+
+
+//  购入
+    if (status == 0) {
+        b = dfs(prices, day + 1, 1, k, targetK, map) - prices[day]
+    } else {
+        c =  dfs(prices, day + 1, 0, k + 1, targetK, map) + prices[day]
+    }
+    map[key] = Math.max(a, Math.max(b, c))
+    return map[key]!!
 }
 
 fun main() {
-    println(maxProfit(intArrayOf(1,2,4,2,5,7,2,4,9,0)))
+    println(maxProfit(intArrayOf(3,3,5,0,0,3,1,4)))
 }

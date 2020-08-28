@@ -27,7 +27,7 @@ fun maxPath(root: TreeNode?): Int {
         maxSum = root.`val` + finalLeft + finalRight
     }
 
-    return root.`val` + Math.max(left, right)
+    return root.`val` + Math.max(finalLeft, finalRight)
 }
 
 fun main() {

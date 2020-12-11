@@ -1,3 +1,5 @@
+package _851_900.leetcode861
+
 fun getScore(matrix: Array<IntArray>): Int {
     if (matrix.isEmpty()) {
         return 0

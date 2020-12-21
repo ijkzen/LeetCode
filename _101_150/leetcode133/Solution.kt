@@ -40,5 +40,4 @@ fun main() {
     node4.neighbors.addAll(arrayListOf(node1, node3))
 
     val root = cloneGraph(node1)
-    root
 }

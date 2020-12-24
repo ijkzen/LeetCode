@@ -4,19 +4,6 @@ import java.lang.StringBuilder
 
 class ListNode(var `val`: Int) {
     var next: ListNode? = null
-
-    override fun toString(): String {
-        val builder = StringBuilder()
-        var wheel = this
-        builder.append(`val`)
-        builder.append(",")
-        while (wheel.next != null) {
-            builder.append(wheel.next?.`val`)
-            builder.append(",")
-            wheel = wheel.next!!
-        }
-        return builder.toString()
-    }
 }
 
 

@@ -16,24 +16,24 @@ class LRUCache1(capacity: Int) {
     }
 
     fun put(key: Int, value: Int) {
-        if (map.size < totalSize) {
-            val node = MyLinkedList.MyLinkedNode(key, value)
-            map[key] = node
-            list.upToHead(node)
-        } else {
-            val node: MyLinkedList.MyLinkedNode
-            if (map.containsKey(key)) {
-                node = map[key]!!
+        when {
+            map.containsKey(key) -> {
+                val node = map[key]!!
                 node.value = value
                 list.upToHead(node)
-                return
             }
-            node = MyLinkedList.MyLinkedNode(key, value)
-
-            val removedKey = list.removeTail()
-            list.upToHead(node)
-            map[key] = node
-            map.remove(removedKey)
+            map.size < totalSize -> {
+                val node = MyLinkedList.MyLinkedNode(key, value)
+                map[key] = node
+                list.upToHead(node)
+            }
+            else -> {
+                val node = MyLinkedList.MyLinkedNode(key, value)
+                val removedKey = list.removeTail()
+                map.remove(removedKey)
+                list.upToHead(node)
+                map[key] = node
+            }
         }
     }
 

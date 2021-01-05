@@ -1,6 +1,6 @@
 package _51_100.leetcode61
 
-import _50.leetcode2.ListNode
+import _1_50.leetcode2.ListNode
 
 fun rotateRight(head: ListNode?, k: Int): ListNode? {
 

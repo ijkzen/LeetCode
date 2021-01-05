@@ -1,6 +1,6 @@
 package _51_100.leetcode86
 
-import _50.leetcode2.ListNode
+import _1_50.leetcode2.ListNode
 
 fun partition1(head: ListNode?, x: Int): ListNode? {
     if (head == null) {

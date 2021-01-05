@@ -1,6 +1,6 @@
 package _51_100.leetcode92
 
-import _50.leetcode2.ListNode
+import _1_50.leetcode2.ListNode
 
 fun reverseBetween(head: ListNode?, m: Int, n: Int): ListNode? {
     if (m == 0 && n == 0) {

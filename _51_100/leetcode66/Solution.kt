@@ -1,6 +1,6 @@
 package _51_100.leetcode66
 
-import _50.leetcode1.string
+import _1_50.leetcode1.string
 
 fun plusOne(digits: IntArray): IntArray {
     return plus(digits, digits.size - 1)

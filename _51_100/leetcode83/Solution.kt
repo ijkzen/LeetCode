@@ -1,6 +1,6 @@
 package _51_100.leetcode83
 
-import _50.leetcode2.ListNode
+import _1_50.leetcode2.ListNode
 
 
 fun deleteDuplicates(head: ListNode?): ListNode? {

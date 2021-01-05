@@ -1,6 +1,6 @@
 package _101_150.leetcode141
 
-import _50.leetcode2.ListNode
+import _1_50.leetcode2.ListNode
 
 fun hasCycle(head: ListNode?): Boolean {
     if (head == null) {

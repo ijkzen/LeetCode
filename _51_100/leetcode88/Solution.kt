@@ -1,6 +1,6 @@
 package _51_100.leetcode88
 
-import _50.leetcode1.string
+import _1_50.leetcode1.string
 
 fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
     if (n == 0) {

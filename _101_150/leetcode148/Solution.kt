@@ -1,6 +1,6 @@
 package _101_150.leetcode148
 
-import _50.leetcode2.ListNode
+import _1_50.leetcode2.ListNode
 
 fun sortList(head: ListNode?): ListNode? {
     if (head == null) {

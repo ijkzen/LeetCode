@@ -4,7 +4,10 @@ class ListNode(var `val`: Int) {
     var next: ListNode? = null
 }
 
-
+/**
+ * 2021/05/19 10:56
+ * 运行耗时232ms，超越97.29%
+ */
 fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
     var isCarry = false
     if (l1 == null) {

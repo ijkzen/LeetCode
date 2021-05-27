@@ -7,6 +7,7 @@ class ListNode(var `val`: Int) {
 /**
  * 2021/05/19 10:56
  * 运行耗时232ms，超越97.29%
+ * 时间复杂度 O() = max(m + n)
  */
 fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
     var isCarry = false

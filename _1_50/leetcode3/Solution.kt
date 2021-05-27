@@ -7,6 +7,7 @@ package _1_50.leetcode3
  * 执行耗时216ms，超越95.86%
  * 原本执行耗时268ms，更改了较大值比较算法；从 kotlin 的 coerceAtLeast 变为 Math.max，
  * coerceAtLeast 是扩展函数可能有额外的开销；
+ * 时间复杂度 O(n) = n
  */
 fun lengthOfLongestSubstring(s: String): Int {
     var finalLength = 0

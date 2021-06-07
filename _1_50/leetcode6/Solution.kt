@@ -1,29 +1,26 @@
 package _1_50.leetcode6
 
-import java.util.*
-
+/**
+ * 执行耗时268ms，超越57.63%
+ * 时间复杂度 O(n) = n
+ */
 fun convert(s: String, numRows: Int): String {
-    val list = LinkedList<StringBuilder>()
     if (numRows >= s.length || numRows == 1) {
         return s
     }
 
+    val list = java.util.ArrayList<StringBuilder>(numRows)
     for (i in 0 until numRows) {
         list.add(StringBuilder())
     }
     var currentRow = 0
-    val iterator = s.iterator()
-    var goingDown = false
-    while (iterator.hasNext()) {
-        list[currentRow].append(iterator.next())
+    var goingDown = -1
+    for (char in s) {
+        list[currentRow].append(char)
         if (currentRow == 0 || currentRow == numRows - 1) {
-            goingDown = !goingDown
+            goingDown = -goingDown
         }
-        currentRow = if (goingDown) currentRow + 1 else currentRow - 1
-
-        if (numRows == 1) {
-            currentRow = 0
-        }
+        currentRow = currentRow + goingDown
     }
 
     val finalBuilder = StringBuilder()

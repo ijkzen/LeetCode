@@ -3,6 +3,8 @@ package _1_50.leetcode5
 /**
  * @author ijkzen
  * @since 2020/4/13
+ * 执行耗时232ms，超越92.56%
+ * 时间复杂度 O(n) = n * n
  */
 fun longestPalindrome(s: String): String {
     var maxLength = 0

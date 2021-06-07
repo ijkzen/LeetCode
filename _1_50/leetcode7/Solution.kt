@@ -1,5 +1,9 @@
 package _1_50.leetcode7
 
+/**
+ * 执行耗时156ms，超越94.30%
+ * 时间复杂度为常量
+ */
 fun reverse(x: Int): Int {
     var x1 = x
     var rev = 0

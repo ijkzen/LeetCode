@@ -1,5 +1,9 @@
 package _1_50.leetcode9
 
+/**
+ * 执行耗时:240 ms,击败了91.06% 的Kotlin用户
+ * 内存消耗:34.4 MB,击败了49.16% 的Kotlin用户
+ */
 fun isPalindrome(x: Int): Boolean {
     when {
         x < 0 -> {
@@ -21,7 +25,6 @@ fun isPalindrome(x: Int): Boolean {
             return x == target
         }
     }
-
 }
 
 fun main() {

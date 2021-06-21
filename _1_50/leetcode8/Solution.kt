@@ -3,6 +3,9 @@ package _1_50.leetcode8
 import java.lang.Exception
 import java.util.regex.Pattern
 
+/**
+ * 执行耗时252ms，超越15.38%
+ */
 fun myAtoi(str: String): Int {
     val origin = str.trim()
     if (origin.isEmpty() || origin[0] != '+' && origin[0] != '-' && origin[0] != '0' &&

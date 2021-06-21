@@ -1,5 +1,9 @@
 package _1_50.leetcode10
 
+/**
+ * 执行耗时:200 ms,击败了73.33% 的Kotlin用户
+ * 内存消耗:35.2 MB,击败了40.00% 的Kotlin用户
+ */
 fun isMatch(text: String, pattern: String): Boolean {
     val textLength = text.length
     val patternLength = pattern.length

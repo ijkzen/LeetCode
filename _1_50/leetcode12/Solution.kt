@@ -2,6 +2,10 @@ package _1_50.leetcode12
 
 import java.lang.StringBuilder
 
+/**
+ * 执行耗时:220 ms,击败了84.13% 的Kotlin用户
+ * 内存消耗:35 MB,击败了58.73% 的Kotlin用户
+ */
 fun intToRoman(num: Int): String {
     val tmp = "$num"
     val builder = StringBuilder()

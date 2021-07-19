@@ -1,5 +1,9 @@
 package _1_50.leetcode13
 
+/**
+ * 执行耗时:196 ms,击败了94.87% 的Kotlin用户
+ * 内存消耗:34.8 MB,击败了66.67% 的Kotlin用户
+ */
 fun romanToInt(s: String): Int {
     var sum = 0
     var isCombine = false

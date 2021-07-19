@@ -3,6 +3,10 @@ package _1_50.leetcode15
 import java.util.*
 import kotlin.collections.ArrayList
 
+/**
+ * 执行耗时:372 ms,击败了98.64% 的Kotlin用户
+ * 内存消耗:46.7 MB,击败了39.45% 的Kotlin用户
+ */
 fun threeSum(nums: IntArray): List<List<Int>> {
     val result = ArrayList<LinkedList<Int>>()
     nums.sort()

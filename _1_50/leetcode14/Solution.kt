@@ -1,5 +1,9 @@
 package _1_50.leetcode14
 
+/**
+ * 执行耗时:160 ms,击败了98.92% 的Kotlin用户
+ * 内存消耗:34.2 MB,击败了97.85% 的Kotlin用户
+ */
 fun longestCommonPrefix(strs: Array<String>): String {
     if (strs.isEmpty()) {
         return ""

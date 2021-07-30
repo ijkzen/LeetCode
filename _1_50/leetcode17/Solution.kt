@@ -1,5 +1,9 @@
 package _1_50.leetcode17
 
+/**
+ * 执行耗时:148 ms,击败了93.15% 的Kotlin用户
+ * 内存消耗:34.6 MB,击败了75.34% 的Kotlin用户
+ */
 import java.util.HashMap
 
 val result = ArrayList<String>()

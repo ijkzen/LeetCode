@@ -2,6 +2,10 @@ package _1_50.leetcode19
 
 import _1_50.leetcode2.ListNode
 
+/**
+ * 执行耗时:148 ms,击败了98.28% 的Kotlin用户
+ * 内存消耗:34.3 MB,击败了39.65% 的Kotlin用户
+ */
 fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
     if (head == null) {
         return null

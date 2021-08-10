@@ -3,6 +3,11 @@ package _1_50.leetcode18
 import java.util.*
 import kotlin.collections.ArrayList
 
+/**
+ * 执行耗时:296 ms,击败了77.27% 的Kotlin用户
+ * 内存消耗:37.8 MB,击败了66.67% 的Kotlin用户
+ */
+
 fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
     val result = ArrayList<LinkedList<Int>>()
     nums.sort()

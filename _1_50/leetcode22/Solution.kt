@@ -1,5 +1,9 @@
 package _1_50.leetcode22
 
+/**
+ * 执行耗时:140 ms,击败了100.00% 的Kotlin用户
+ * 内存消耗:35.3 MB,击败了41.67% 的Kotlin用户
+ */
 fun generateParenthesis(n: Int): List<String> {
 
     if (n == 0) {

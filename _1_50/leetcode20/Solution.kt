@@ -2,6 +2,10 @@ package _1_50.leetcode20
 
 import java.util.*
 
+/**
+ * 执行耗时:140 ms,击败了93.22% 的Kotlin用户
+ * 内存消耗:33.1 MB,击败了48.30% 的Kotlin用户
+ */
 fun isValid(s: String): Boolean {
 
     if (s.length % 2 == 1) {
@@ -19,6 +23,8 @@ fun isValid(s: String): Boolean {
             try {
                 if (map[stack.peek()] == it) {
                     stack.pop()
+                } else {
+                    return false
                 }
             } catch (e: EmptyStackException) {
                 result = false
@@ -30,5 +36,5 @@ fun isValid(s: String): Boolean {
 }
 
 fun main() {
-    println(isValid("){"))
+    println(isValid("([}}])"))
 }

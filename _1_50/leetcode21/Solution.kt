@@ -2,6 +2,10 @@ package _1_50.leetcode21
 
 import _1_50.leetcode2.ListNode
 
+/**
+ * 执行耗时:172 ms,击败了79.11% 的Kotlin用户
+ * 内存消耗:34.3 MB,击败了31.65% 的Kotlin用户
+ */
 fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
     var list1: ListNode? = l1
     var list2: ListNode? = l2

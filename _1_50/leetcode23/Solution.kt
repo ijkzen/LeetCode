@@ -2,6 +2,10 @@ package _1_50.leetcode23
 
 import _1_50.leetcode2.ListNode
 
+/**
+ * 执行耗时:220 ms,击败了91.03% 的Kotlin用户
+ * 内存消耗:42.5 MB,击败了19.23% 的Kotlin用户
+ */
 fun mergeKLists(lists: Array<ListNode?>): ListNode? {
     return merge(lists, 0, lists.size - 1)
 }

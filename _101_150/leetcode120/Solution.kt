@@ -18,7 +18,7 @@ fun minimumTotal(triangle: List<List<Int>>): Int {
         }
     }
 
-    return dp[n - 1].min()!!
+    return dp[n - 1].minOrNull()!!
 }
 
 fun main() {

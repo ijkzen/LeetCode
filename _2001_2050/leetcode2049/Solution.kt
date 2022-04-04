@@ -1,14 +1,23 @@
 package _2001_2050.leetcode2049
 
+/**
+ * Your runtime beats 18.52 % of kotlin submissions
+ * Your memory usage beats 37.04 % of kotlin submissions (69.5 MB)
+ */
 data class TreeNode(
     var left: TreeNode? = null,
     var right: TreeNode? = null,
 ) {
-    val size: Long
+    var size: Long = 0
         get() {
-            val leftSize = left?.size ?: 0L
-            val rightSize = right?.size ?: 0L
-            return leftSize + rightSize + 1
+            if (field != 0L){
+                return field
+            } else {
+                val leftSize = left?.size ?: 0L
+                val rightSize = right?.size ?: 0L
+                field = leftSize + rightSize + 1
+                return field
+            }
         }
 }
 
@@ -26,6 +35,8 @@ fun countHighestScoreNodes(parents: IntArray): Int {
         putChild2Tree(parentNode!!, childNode!!)
     }
 
+    treeNodeMap[0]!!.size
+
     val resultList = mutableListOf<Long>()
     for (i in parents.indices) {
         val rootNode = treeNodeMap[0]!!
@@ -35,13 +46,11 @@ fun countHighestScoreNodes(parents: IntArray): Int {
             val result = leftSize * rightSize
             resultList.add(result)
         } else {
-            val parentNode = treeNodeMap[parents[i]]!!
             val childNode = treeNodeMap[i]!!
-            removeChild(parentNode, childNode)
+            val rootSize = rootNode.size - childNode.size
             val childLeftSize = childNode.left?.size ?: 1
             val childRightSize = childNode.right?.size ?: 1
-            resultList.add(childLeftSize * childRightSize * rootNode.size)
-            putChild2Tree(parentNode, childNode)
+            resultList.add(childLeftSize * childRightSize * rootSize)
         }
     }
 
@@ -54,14 +63,6 @@ fun putChild2Tree(parent: TreeNode, child: TreeNode) {
         parent.left = child
     } else {
         parent.right = child
-    }
-}
-
-fun removeChild(parent: TreeNode, child: TreeNode) {
-    if (parent.left == child) {
-        parent.left = null
-    } else {
-        parent.right = null
     }
 }
 
